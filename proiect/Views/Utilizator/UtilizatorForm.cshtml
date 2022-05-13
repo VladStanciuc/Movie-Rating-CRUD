@@ -1,0 +1,29 @@
+﻿@model proiect.ViewModels.UtilizatorViewModel
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Utilizator</h2>
+
+@using (Html.BeginForm("Save", "Utilizator"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nume)
+        @Html.TextBoxFor(m => m.Nume, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Prenume)
+        @Html.TextBoxFor(m => m.Prenume, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Parola)
+        @Html.TextBoxFor(m => m.Parola, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DataCreare)
+        @Html.TextBoxFor(m => m.DataCreare, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.UtilizatorID)
+    <button type="submit" class="btn btn-primary">Save</button>
+}

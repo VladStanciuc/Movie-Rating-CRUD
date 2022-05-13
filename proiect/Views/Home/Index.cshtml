@@ -1,0 +1,10 @@
+﻿@using System.Data
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<li>@Html.ActionLink("Filme peste medie", "OverMedieMovies", "Film")</li>
+<li>@Html.ActionLink("Filme cu rating 5/5", "BestMovies", "Film")</li>
+<li>@Html.ActionLink("Top 10 cele mai votate filme", "VotateFilme", "Film")</li>
+<li>@Html.ActionLink("Top 10 cei mai activi utilizatori", "ActiviUtilizatori", "Utilizator")</li>
+<li>@Html.ActionLink("Filme cu mai mult de 2 case de productie", "DouaCaseProductie", "Film")</li>

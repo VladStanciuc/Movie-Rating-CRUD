@@ -1,0 +1,27 @@
+﻿@model proiect.ViewModels.UtilizatorViewModel
+@{
+    ViewBag.Title = "New Review";
+}
+
+<h2>New review</h2>
+
+@using (Html.BeginForm("SaveReview", "Utilizator"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Film)
+        @Html.DropDownListFor(m => m.Film, new SelectList(Model.Filme), new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Rating)
+        @Html.TextBoxFor(m => m.Rating, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Feedback)
+        @Html.TextBoxFor(m => m.Feedback, new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.UtilizatorID)
+    @Html.HiddenFor(m => m.DescriereFilmID)
+    <button type="submit" class="btn btn-primary">Save</button>
+}

@@ -1,0 +1,24 @@
+﻿@using System.Data
+@{
+    ViewBag.Title = "DouaCaseProductie";
+    DataTable table = ViewBag.Tabela;
+}
+
+<h2>Cei mai activi utilizatori</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Nume</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow currentRow in table.Rows)
+        {
+            <tr>
+                <td>@currentRow["Nume"] </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

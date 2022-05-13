@@ -1,0 +1,36 @@
+﻿@using System.Data;
+@using proiect.Controllers;
+
+
+@{
+    ViewBag.Title = "Reviews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DataTable Review = ViewBag.Reviews;
+    int ID = ViewBag.ID;
+}
+
+<h2>Reviews</h2>
+ 
+<p>
+    @Html.ActionLink("Creare review", "NewReview", "Utilizator", new { id = ID }, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Nume film</td>
+            <td>Rating</td>
+            <td>Feedback</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(DataRow currentRow in Review.Rows)
+        {
+            <tr>
+                <td>@currentRow["NumeFilm"] </td>
+                <td>@currentRow["Rating"]/5</td>
+                <td>@currentRow["Feedback"]</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

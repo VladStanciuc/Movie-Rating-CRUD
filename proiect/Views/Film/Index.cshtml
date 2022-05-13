@@ -1,0 +1,50 @@
+﻿@using System.Data;
+@using proiect.ViewModels;
+
+@model FilmViewModel 
+@{
+    ViewBag.Title = "Filme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DataTable Film = ViewBag.Filme;
+    DataTable Gen = ViewBag.Genuri;
+}
+
+<h2>Filme</h2>
+
+
+<p>
+    @Html.ActionLink("Adaugare film", "New", "Film", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Nume </td>
+            <td>Gen </td>
+            <td>Data lansare</td>
+            <td>Durata</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow currentRow in Film.Rows)
+        {
+            <tr>
+                <td>@currentRow["Nume"] </td>
+            
+                    @foreach (DataRow currentRow2 in Gen.Rows)
+                    {
+                        if (currentRow["GenID"].Equals(currentRow2["GenID"]))
+                        {
+                           <td>@currentRow2["Nume"]</td>
+                        }   
+                    }
+      
+                <td>@currentRow["DataLansare"].ToString().Substring(0,9)</td>
+                <td>@currentRow["Durata"]</td>
+                <td>@Html.ActionLink("Edit", "Edit", "Film", new { id = currentRow["FilmID"] }, null)</td>
+                <td>@Html.ActionLink("Delete", "Delete", "Film", new { id = currentRow["FilmID"] }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>

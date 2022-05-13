@@ -1,0 +1,41 @@
+﻿@using System.Data;
+@using proiect.Controllers;
+
+
+@{
+    ViewBag.Title = "Utilizatori";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DataTable Utilizator = ViewBag.Utilizatori;
+}
+
+<h2>Utilizatori</h2>
+
+
+<p>
+    @Html.ActionLink("Creare utilizator", "New", "Utilizator", null, new { @class = "btn btn-primary" })
+</p>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <td>Nume </td>
+                <td>Prenume </td>
+                <td>Data Creare</td>
+                <td>Reviews</td>
+                <td>Editare</td>
+                <td>Stergere</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow currentRow in Utilizator.Rows)
+            {
+                <tr>
+                    <td>@currentRow["Nume"] </td>
+                    <td>@currentRow["Prenume"] </td>
+                    <td>@currentRow["DataCreare"].ToString().Substring(0, 9)</td>
+                    <td>@Html.ActionLink("Reviews","GetReviewsForUtilizator", "Utilizator", new { id = currentRow["UtilizatorID"] }, null)</td>
+                    <td>@Html.ActionLink("Edit", "Edit", "Utilizator", new { id = currentRow["UtilizatorID"] }, null)</td>
+                    <td>@Html.ActionLink("Delete", "Delete", "Utilizator", new { id = currentRow["UtilizatorID"] }, null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>

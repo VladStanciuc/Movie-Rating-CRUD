@@ -1,0 +1,25 @@
+﻿@using System.Data
+
+@{
+    ViewBag.Title = "Index";
+    DataTable CaseProd = ViewBag.CaseProductie;
+}
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Nume </td>
+            <td>Lista Filme</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow currentRow in CaseProd.Rows)
+        {
+            <tr>
+                <td>@currentRow["Nume"] </td>
+                <td>@Html.ActionLink("Filme", "ViewFilme", "CasaProductie", new { id = currentRow["CasaProductieID"] }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
